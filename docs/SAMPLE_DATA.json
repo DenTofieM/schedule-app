@@ -1,0 +1,322 @@
+{
+  "sections": [
+    {
+      "id": "sec-001",
+      "name": "Class 10-A",
+      "yearLevel": 10,
+      "section": "A",
+      "description": "Science Stream",
+      "isActive": true,
+      "createdAt": "2024-01-15T08:00:00Z",
+      "updatedAt": "2024-01-15T08:00:00Z",
+      "createdBy": "user-001"
+    },
+    {
+      "id": "sec-002",
+      "name": "Class 10-B",
+      "yearLevel": 10,
+      "section": "B",
+      "description": "Commerce Stream",
+      "isActive": true,
+      "createdAt": "2024-01-15T08:00:00Z",
+      "updatedAt": "2024-01-15T08:00:00Z",
+      "createdBy": "user-001"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "subj-001",
+      "name": "Mathematics",
+      "code": "MATH101",
+      "description": "Advanced Mathematics",
+      "credits": 4,
+      "isActive": true,
+      "createdAt": "2024-01-10T08:00:00Z",
+      "updatedAt": "2024-01-10T08:00:00Z",
+      "createdBy": "user-001"
+    },
+    {
+      "id": "subj-002",
+      "name": "Physics",
+      "code": "PHY101",
+      "description": "General Physics",
+      "credits": 4,
+      "isActive": true,
+      "createdAt": "2024-01-10T08:00:00Z",
+      "updatedAt": "2024-01-10T08:00:00Z",
+      "createdBy": "user-001"
+    },
+    {
+      "id": "subj-003",
+      "name": "Chemistry",
+      "code": "CHEM101",
+      "description": "Organic Chemistry",
+      "credits": 4,
+      "isActive": true,
+      "createdAt": "2024-01-10T08:00:00Z",
+      "updatedAt": "2024-01-10T08:00:00Z",
+      "createdBy": "user-001"
+    },
+    {
+      "id": "subj-004",
+      "name": "English",
+      "code": "ENG101",
+      "description": "English Literature",
+      "credits": 3,
+      "isActive": true,
+      "createdAt": "2024-01-10T08:00:00Z",
+      "updatedAt": "2024-01-10T08:00:00Z",
+      "createdBy": "user-001"
+    }
+  ],
+  "teachers": [
+    {
+      "id": "tea-001",
+      "firstName": "Raj",
+      "lastName": "Kumar",
+      "email": "raj.kumar@school.com",
+      "phone": "+91-9876543210",
+      "employeeId": "EMP001",
+      "department": "Science",
+      "qualifications": ["M.Sc", "B.Ed"],
+      "subjectIds": ["subj-001", "subj-002"],
+      "maxPeriodsPerDay": 6,
+      "maxPeriodsPerWeek": 30,
+      "isActive": true,
+      "createdAt": "2024-01-05T08:00:00Z",
+      "updatedAt": "2024-01-05T08:00:00Z",
+      "createdBy": "user-001"
+    },
+    {
+      "id": "tea-002",
+      "firstName": "Priya",
+      "lastName": "Singh",
+      "email": "priya.singh@school.com",
+      "phone": "+91-9876543211",
+      "employeeId": "EMP002",
+      "department": "Science",
+      "qualifications": ["M.Sc", "B.Ed"],
+      "subjectIds": ["subj-003"],
+      "maxPeriodsPerDay": 6,
+      "maxPeriodsPerWeek": 30,
+      "isActive": true,
+      "createdAt": "2024-01-05T08:00:00Z",
+      "updatedAt": "2024-01-05T08:00:00Z",
+      "createdBy": "user-001"
+    },
+    {
+      "id": "tea-003",
+      "firstName": "Amit",
+      "lastName": "Verma",
+      "email": "amit.verma@school.com",
+      "phone": "+91-9876543212",
+      "employeeId": "EMP003",
+      "department": "English",
+      "qualifications": ["M.A", "B.Ed"],
+      "subjectIds": ["subj-004"],
+      "maxPeriodsPerDay": 6,
+      "maxPeriodsPerWeek": 30,
+      "isActive": true,
+      "createdAt": "2024-01-05T08:00:00Z",
+      "updatedAt": "2024-01-05T08:00:00Z",
+      "createdBy": "user-001"
+    }
+  ],
+  "days": [
+    {
+      "id": "day-001",
+      "name": "Monday",
+      "dayOfWeek": 0,
+      "isWorkingDay": true,
+      "sequenceNumber": 1,
+      "description": null,
+      "createdAt": "2024-01-01T08:00:00Z",
+      "updatedAt": "2024-01-01T08:00:00Z",
+      "createdBy": "system"
+    },
+    {
+      "id": "day-002",
+      "name": "Tuesday",
+      "dayOfWeek": 1,
+      "isWorkingDay": true,
+      "sequenceNumber": 2,
+      "description": null,
+      "createdAt": "2024-01-01T08:00:00Z",
+      "updatedAt": "2024-01-01T08:00:00Z",
+      "createdBy": "system"
+    },
+    {
+      "id": "day-003",
+      "name": "Wednesday",
+      "dayOfWeek": 2,
+      "isWorkingDay": true,
+      "sequenceNumber": 3,
+      "description": null,
+      "createdAt": "2024-01-01T08:00:00Z",
+      "updatedAt": "2024-01-01T08:00:00Z",
+      "createdBy": "system"
+    },
+    {
+      "id": "day-004",
+      "name": "Thursday",
+      "dayOfWeek": 3,
+      "isWorkingDay": true,
+      "sequenceNumber": 4,
+      "description": null,
+      "createdAt": "2024-01-01T08:00:00Z",
+      "updatedAt": "2024-01-01T08:00:00Z",
+      "createdBy": "system"
+    },
+    {
+      "id": "day-005",
+      "name": "Friday",
+      "dayOfWeek": 4,
+      "isWorkingDay": true,
+      "sequenceNumber": 5,
+      "description": null,
+      "createdAt": "2024-01-01T08:00:00Z",
+      "updatedAt": "2024-01-01T08:00:00Z",
+      "createdBy": "system"
+    },
+    {
+      "id": "day-006",
+      "name": "Saturday",
+      "dayOfWeek": 5,
+      "isWorkingDay": true,
+      "sequenceNumber": 6,
+      "description": null,
+      "createdAt": "2024-01-01T08:00:00Z",
+      "updatedAt": "2024-01-01T08:00:00Z",
+      "createdBy": "system"
+    }
+  ],
+  "periods": [
+    {
+      "id": "per-001",
+      "name": "Period 1",
+      "startTime": "08:00",
+      "endTime": "08:45",
+      "durationMinutes": 45,
+      "sequenceNumber": 1,
+      "isBreak": false,
+      "description": null,
+      "createdAt": "2024-01-01T08:00:00Z",
+      "updatedAt": "2024-01-01T08:00:00Z",
+      "createdBy": "system"
+    },
+    {
+      "id": "per-002",
+      "name": "Period 2",
+      "startTime": "08:45",
+      "endTime": "09:30",
+      "durationMinutes": 45,
+      "sequenceNumber": 2,
+      "isBreak": false,
+      "description": null,
+      "createdAt": "2024-01-01T08:00:00Z",
+      "updatedAt": "2024-01-01T08:00:00Z",
+      "createdBy": "system"
+    },
+    {
+      "id": "per-003",
+      "name": "Break",
+      "startTime": "09:30",
+      "endTime": "09:45",
+      "durationMinutes": 15,
+      "sequenceNumber": 3,
+      "isBreak": true,
+      "description": "Mid-morning break",
+      "createdAt": "2024-01-01T08:00:00Z",
+      "updatedAt": "2024-01-01T08:00:00Z",
+      "createdBy": "system"
+    },
+    {
+      "id": "per-004",
+      "name": "Period 3",
+      "startTime": "09:45",
+      "endTime": "10:30",
+      "durationMinutes": 45,
+      "sequenceNumber": 4,
+      "isBreak": false,
+      "description": null,
+      "createdAt": "2024-01-01T08:00:00Z",
+      "updatedAt": "2024-01-01T08:00:00Z",
+      "createdBy": "system"
+    },
+    {
+      "id": "per-005",
+      "name": "Period 4",
+      "startTime": "10:30",
+      "endTime": "11:15",
+      "durationMinutes": 45,
+      "sequenceNumber": 5,
+      "isBreak": false,
+      "description": null,
+      "createdAt": "2024-01-01T08:00:00Z",
+      "updatedAt": "2024-01-01T08:00:00Z",
+      "createdBy": "system"
+    },
+    {
+      "id": "per-006",
+      "name": "Period 5",
+      "startTime": "11:15",
+      "endTime": "12:00",
+      "durationMinutes": 45,
+      "sequenceNumber": 6,
+      "isBreak": false,
+      "description": null,
+      "createdAt": "2024-01-01T08:00:00Z",
+      "updatedAt": "2024-01-01T08:00:00Z",
+      "createdBy": "system"
+    }
+  ],
+  "routines": [
+    {
+      "id": "rout-001",
+      "sectionId": "sec-001",
+      "name": "Class 10-A Routine 2024",
+      "description": "Primary routine for Class 10-A",
+      "academicYear": "2024-2025",
+      "version": 1,
+      "status": "DRAFT",
+      "isActive": true,
+      "assignments": [],
+      "totalPeriods": 5,
+      "subjectsCount": 0,
+      "teachersCount": 0,
+      "createdAt": "2024-01-20T08:00:00Z",
+      "updatedAt": "2024-01-20T08:00:00Z",
+      "createdBy": "user-001"
+    }
+  ],
+  "user": {
+    "id": "user-001",
+    "email": "admin@school.com",
+    "firstName": "Admin",
+    "lastName": "User",
+    "role": "ADMIN",
+    "isActive": true,
+    "createdAt": "2024-01-01T08:00:00Z",
+    "updatedAt": "2024-01-01T08:00:00Z",
+    "failedLoginAttempts": 0
+  },
+  "schoolConfig": {
+    "id": "config-001",
+    "schoolName": "ABC School",
+    "schoolCode": "ABC001",
+    "address": "123 School Lane, City",
+    "phone": "+91-9876543200",
+    "email": "info@abcschool.com",
+    "website": "https://abcschool.com",
+    "workingDays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "totalPeriods": 6,
+    "periodDuration": 45,
+    "breakPeriodIds": ["per-003"],
+    "allowTeacherDoubleBooking": false,
+    "maxTeacherPeriodsPerDay": 6,
+    "maxTeacherPeriodsPerWeek": 30,
+    "createdAt": "2024-01-01T08:00:00Z",
+    "updatedAt": "2024-01-01T08:00:00Z",
+    "createdBy": "system"
+  }
+}
