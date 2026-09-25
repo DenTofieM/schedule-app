@@ -1,89 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import type { Routine, Section, Subject, Teacher } from '@/types';
+import type { Routine } from '@/types';
+
+import { buildDefaultMasterData } from './master-data';
 
 const STORAGE_KEY = 'schedule-app:data';
-
-const defaultSections: Section[] = [
-  {
-    id: 'section-1',
-    name: 'Class A',
-    yearLevel: 10,
-    section: 'A',
-    description: 'Grade 10 section A',
-    isActive: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    createdBy: 'system',
-  },
-  {
-    id: 'section-2',
-    name: 'Class B',
-    yearLevel: 10,
-    section: 'B',
-    description: 'Grade 10 section B',
-    isActive: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    createdBy: 'system',
-  },
-];
-
-const defaultSubjects: Subject[] = [
-  {
-    id: 'subject-1',
-    name: 'Mathematics',
-    code: 'MATH',
-    description: 'Core mathematics',
-    isActive: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    createdBy: 'system',
-  },
-  {
-    id: 'subject-2',
-    name: 'Science',
-    code: 'SCI',
-    description: 'General science',
-    isActive: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    createdBy: 'system',
-  },
-];
-
-const defaultTeachers: Teacher[] = [
-  {
-    id: 'teacher-1',
-    firstName: 'Aarti',
-    lastName: 'Sharma',
-    email: 'aarti.sharma@example.com',
-    employeeId: 'EMP-1001',
-    qualifications: ['B.Sc.', 'M.Sc.'],
-    subjectIds: ['subject-1', 'subject-2'],
-    maxPeriodsPerDay: 6,
-    maxPeriodsPerWeek: 30,
-    isActive: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    createdBy: 'system',
-  },
-  {
-    id: 'teacher-2',
-    firstName: 'Rahul',
-    lastName: 'Patel',
-    email: 'rahul.patel@example.com',
-    employeeId: 'EMP-1002',
-    qualifications: ['B.A.', 'B.Ed.'],
-    subjectIds: ['subject-2'],
-    maxPeriodsPerDay: 5,
-    maxPeriodsPerWeek: 24,
-    isActive: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    createdBy: 'system',
-  },
-];
 
 const defaultRoutines: Routine[] = [
   {
@@ -105,9 +26,7 @@ const defaultRoutines: Routine[] = [
 ];
 
 export const defaultAppData = {
-  sections: defaultSections,
-  subjects: defaultSubjects,
-  teachers: defaultTeachers,
+  ...buildDefaultMasterData(),
   routines: defaultRoutines,
 };
 
@@ -125,6 +44,8 @@ export const storageService = {
         sections: parsed.sections ?? defaultAppData.sections,
         subjects: parsed.subjects ?? defaultAppData.subjects,
         teachers: parsed.teachers ?? defaultAppData.teachers,
+        days: parsed.days ?? defaultAppData.days,
+        periods: parsed.periods ?? defaultAppData.periods,
         routines: parsed.routines ?? defaultAppData.routines,
       };
     } catch {
