@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { ActivityIndicator, Button, Text, TextInput } from 'react-native-paper';
 
 import { authService } from '@/api/auth';
@@ -43,20 +43,20 @@ export default function LoginScreen() {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.header}>
-        <Text variant="headlineLarge" style={styles.title}>
+    <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', padding: 20, backgroundColor: AppPalette.surface.bg }}>
+      <View style={{ marginBottom: 40, alignItems: 'center' }}>
+        <Text variant="headlineLarge" style={{ fontWeight: 'bold', marginBottom: 8 }}>
           Schedule App
         </Text>
-        <Text variant="bodyMedium" style={styles.subtitle}>
+        <Text variant="bodyMedium" style={{ color: AppPalette.content.secondary }}>
           Admin Login
         </Text>
       </View>
 
-      <View style={styles.form}>
+      <View style={{ backgroundColor: AppPalette.surface.card, padding: 20, borderRadius: 12, elevation: 2, borderWidth: 1, borderColor: AppPalette.surface.border }}>
         {error && (
-          <View style={styles.errorContainer}>
-            <Text style={styles.errorText}>{error}</Text>
+          <View style={{ backgroundColor: AppPalette.status.conflictBg, padding: 12, borderRadius: 8, marginBottom: 20, borderLeftWidth: 4, borderLeftColor: AppPalette.status.conflictBorder }}>
+            <Text style={{ color: AppPalette.status.conflictText }}>{error}</Text>
           </View>
         )}
 
@@ -78,12 +78,12 @@ export default function LoginScreen() {
               mode="outlined"
               keyboardType="email-address"
               autoCapitalize="none"
-              style={styles.input}
+              style={{ marginBottom: 8 }}
               error={!!errors.email}
             />
           )}
         />
-        {errors.email && <Text style={styles.inputError}>{errors.email.message}</Text>}
+        {errors.email && <Text style={{ color: AppPalette.status.conflictBadge, fontSize: 12, marginBottom: 12 }}>{errors.email.message}</Text>}
 
         <Controller
           control={control}
@@ -102,23 +102,23 @@ export default function LoginScreen() {
               onChangeText={onChange}
               mode="outlined"
               secureTextEntry
-              style={styles.input}
+              style={{ marginBottom: 8 }}
               error={!!errors.password}
             />
           )}
         />
-        {errors.password && <Text style={styles.inputError}>{errors.password.message}</Text>}
+        {errors.password && <Text style={{ color: AppPalette.status.conflictBadge, fontSize: 12, marginBottom: 12 }}>{errors.password.message}</Text>}
 
         <Button
           mode="contained"
           onPress={handleSubmit(onSubmit)}
-          style={styles.submitButton}
+          style={{ marginTop: 20, paddingVertical: 8 }}
           disabled={isLoading}
         >
           {isLoading ? <ActivityIndicator /> : 'Login'}
         </Button>
 
-        <View style={styles.footer}>
+        <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
           <Text variant="bodySmall">Don&apos;t have an account? </Text>
           <Button
             mode="text"
@@ -132,7 +132,7 @@ export default function LoginScreen() {
         <Button
           mode="text"
           onPress={() => router.push('/(auth)/forgot-password')}
-          style={styles.forgotButton}
+          style={{ marginTop: 12 }}
         >
           Forgot Password?
         </Button>
@@ -141,62 +141,3 @@ export default function LoginScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    justifyContent: 'center',
-    padding: 20,
-    backgroundColor: AppPalette.surface.bg,
-  },
-  header: {
-    marginBottom: 40,
-    alignItems: 'center',
-  },
-  title: {
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
-  subtitle: {
-    color: AppPalette.content.secondary,
-  },
-  form: {
-    backgroundColor: AppPalette.surface.card,
-    padding: 20,
-    borderRadius: 12,
-    elevation: 2,
-    borderWidth: 1,
-    borderColor: AppPalette.surface.border,
-  },
-  input: {
-    marginBottom: 8,
-  },
-  inputError: {
-    color: AppPalette.status.conflictBadge,
-    fontSize: 12,
-    marginBottom: 12,
-  },
-  errorContainer: {
-    backgroundColor: AppPalette.status.conflictBg,
-    padding: 12,
-    borderRadius: 8,
-    marginBottom: 20,
-    borderLeftWidth: 4,
-    borderLeftColor: AppPalette.status.conflictBorder,
-  },
-  errorText: {
-    color: AppPalette.status.conflictText,
-  },
-  submitButton: {
-    marginTop: 20,
-    paddingVertical: 8,
-  },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  forgotButton: {
-    marginTop: 12,
-  },
-});

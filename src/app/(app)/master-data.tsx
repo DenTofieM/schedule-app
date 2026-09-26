@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { ScrollView, StyleSheet, TextInput, View } from 'react-native';
+import { ScrollView, TextInput, View } from 'react-native';
 import { Button, Card, Dialog, Portal, Text } from 'react-native-paper';
 
 import { AppPalette } from '@/constants/theme';
@@ -427,48 +427,48 @@ export default function MasterDataScreen() {
     switch (activeTab) {
       case 'sections':
         return (
-          <View style={styles.formGrid}>
-            <TextInput style={styles.input} placeholder="Class name" value={draft.name} onChangeText={(value) => setDraft((prev) => ({ ...prev, name: value }))} />
-            <TextInput style={styles.input} placeholder="Year level" keyboardType="numeric" value={draft.yearLevel} onChangeText={(value) => setDraft((prev) => ({ ...prev, yearLevel: value }))} />
-            <TextInput style={styles.input} placeholder="Section label" value={draft.section} onChangeText={(value) => setDraft((prev) => ({ ...prev, section: value }))} />
-            <TextInput style={[styles.input, styles.textArea]} placeholder="Description" multiline value={draft.description} onChangeText={(value) => setDraft((prev) => ({ ...prev, description: value }))} />
+          <View>
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Class name" value={draft.name} onChangeText={(value) => setDraft((prev) => ({ ...prev, name: value }))} />
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Year level" keyboardType="numeric" value={draft.yearLevel} onChangeText={(value) => setDraft((prev) => ({ ...prev, yearLevel: value }))} />
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Section label" value={draft.section} onChangeText={(value) => setDraft((prev) => ({ ...prev, section: value }))} />
+            <TextInput style={{ minHeight: 96, textAlignVertical: 'top', marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Description" multiline value={draft.description} onChangeText={(value) => setDraft((prev) => ({ ...prev, description: value }))} />
           </View>
         );
       case 'subjects':
         return (
-          <View style={styles.formGrid}>
-            <TextInput style={styles.input} placeholder="Subject name" value={draft.name} onChangeText={(value) => setDraft((prev) => ({ ...prev, name: value }))} />
-            <TextInput style={styles.input} placeholder="Code" value={draft.code} onChangeText={(value) => setDraft((prev) => ({ ...prev, code: value }))} />
-            <TextInput style={[styles.input, styles.textArea]} placeholder="Description" multiline value={draft.description} onChangeText={(value) => setDraft((prev) => ({ ...prev, description: value }))} />
+          <View>
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Subject name" value={draft.name} onChangeText={(value) => setDraft((prev) => ({ ...prev, name: value }))} />
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Code" value={draft.code} onChangeText={(value) => setDraft((prev) => ({ ...prev, code: value }))} />
+            <TextInput style={{ minHeight: 96, textAlignVertical: 'top', marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Description" multiline value={draft.description} onChangeText={(value) => setDraft((prev) => ({ ...prev, description: value }))} />
           </View>
         );
       case 'teachers':
         return (
-          <View style={styles.formGrid}>
-            <TextInput style={styles.input} placeholder="First name" value={draft.firstName} onChangeText={(value) => setDraft((prev) => ({ ...prev, firstName: value }))} />
-            <TextInput style={styles.input} placeholder="Last name" value={draft.lastName} onChangeText={(value) => setDraft((prev) => ({ ...prev, lastName: value }))} />
-            <TextInput style={styles.input} placeholder="Email" value={draft.email} onChangeText={(value) => setDraft((prev) => ({ ...prev, email: value }))} />
-            <TextInput style={styles.input} placeholder="Employee ID" value={draft.employeeId} onChangeText={(value) => setDraft((prev) => ({ ...prev, employeeId: value }))} />
-            <TextInput style={styles.input} placeholder="Phone" value={draft.telephone} onChangeText={(value) => setDraft((prev) => ({ ...prev, telephone: value }))} />
-            <TextInput style={styles.input} placeholder="Subjects (comma separated)" value={draft.subjectIdsText} onChangeText={(value) => setDraft((prev) => ({ ...prev, subjectIdsText: value }))} />
+          <View>
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="First name" value={draft.firstName} onChangeText={(value) => setDraft((prev) => ({ ...prev, firstName: value }))} />
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Last name" value={draft.lastName} onChangeText={(value) => setDraft((prev) => ({ ...prev, lastName: value }))} />
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Email" value={draft.email} onChangeText={(value) => setDraft((prev) => ({ ...prev, email: value }))} />
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Employee ID" value={draft.employeeId} onChangeText={(value) => setDraft((prev) => ({ ...prev, employeeId: value }))} />
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Phone" value={draft.telephone} onChangeText={(value) => setDraft((prev) => ({ ...prev, telephone: value }))} />
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Subjects (comma separated)" value={draft.subjectIdsText} onChangeText={(value) => setDraft((prev) => ({ ...prev, subjectIdsText: value }))} />
           </View>
         );
       case 'days':
         return (
-          <View style={styles.formGrid}>
-            <TextInput style={styles.input} placeholder="Day name" value={draft.name} onChangeText={(value) => setDraft((prev) => ({ ...prev, name: value }))} />
-            <TextInput style={styles.input} placeholder="Weekday number" keyboardType="numeric" value={draft.dayOfWeek} onChangeText={(value) => setDraft((prev) => ({ ...prev, dayOfWeek: value }))} />
-            <TextInput style={[styles.input, styles.textArea]} placeholder="Description" multiline value={draft.description} onChangeText={(value) => setDraft((prev) => ({ ...prev, description: value }))} />
+          <View>
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Day name" value={draft.name} onChangeText={(value) => setDraft((prev) => ({ ...prev, name: value }))} />
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Weekday number" keyboardType="numeric" value={draft.dayOfWeek} onChangeText={(value) => setDraft((prev) => ({ ...prev, dayOfWeek: value }))} />
+            <TextInput style={{ minHeight: 96, textAlignVertical: 'top', marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Description" multiline value={draft.description} onChangeText={(value) => setDraft((prev) => ({ ...prev, description: value }))} />
           </View>
         );
       case 'periods':
         return (
-          <View style={styles.formGrid}>
-            <TextInput style={styles.input} placeholder="Period name" value={draft.name} onChangeText={(value) => setDraft((prev) => ({ ...prev, name: value }))} />
-            <TextInput style={styles.input} placeholder="Start time" value={draft.startTime} onChangeText={(value) => setDraft((prev) => ({ ...prev, startTime: value }))} />
-            <TextInput style={styles.input} placeholder="End time" value={draft.endTime} onChangeText={(value) => setDraft((prev) => ({ ...prev, endTime: value }))} />
-            <TextInput style={styles.input} placeholder="Sequence" keyboardType="numeric" value={draft.sequenceNumber} onChangeText={(value) => setDraft((prev) => ({ ...prev, sequenceNumber: value }))} />
-            <TextInput style={[styles.input, styles.textArea]} placeholder="Description" multiline value={draft.description} onChangeText={(value) => setDraft((prev) => ({ ...prev, description: value }))} />
+          <View>
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Period name" value={draft.name} onChangeText={(value) => setDraft((prev) => ({ ...prev, name: value }))} />
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Start time" value={draft.startTime} onChangeText={(value) => setDraft((prev) => ({ ...prev, startTime: value }))} />
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="End time" value={draft.endTime} onChangeText={(value) => setDraft((prev) => ({ ...prev, endTime: value }))} />
+            <TextInput style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Sequence" keyboardType="numeric" value={draft.sequenceNumber} onChangeText={(value) => setDraft((prev) => ({ ...prev, sequenceNumber: value }))} />
+            <TextInput style={{ minHeight: 96, textAlignVertical: 'top', marginBottom: 12, backgroundColor: AppPalette.surface.card, borderRadius: 8, borderWidth: 1, borderColor: AppPalette.surface.border, paddingHorizontal: 12, paddingVertical: 10 }} placeholder="Description" multiline value={draft.description} onChangeText={(value) => setDraft((prev) => ({ ...prev, description: value }))} />
           </View>
         );
       default:
@@ -501,12 +501,12 @@ export default function MasterDataScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text variant="headlineSmall" style={styles.heading}>
+    <View style={{ flex: 1, padding: 16, backgroundColor: AppPalette.surface.bg }}>
+      <Text variant="headlineSmall" style={{ marginBottom: 12, fontWeight: '700' }}>
         Master Data
       </Text>
 
-      <View style={styles.tabRow}>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 16 }}>
         {tabs.map((tab) => (
           <Button
             key={tab.key}
@@ -519,16 +519,16 @@ export default function MasterDataScreen() {
         ))}
       </View>
 
-      <Button mode="contained" onPress={openCreateForm} style={styles.primaryButton}>
+      <Button mode="contained" onPress={openCreateForm} style={{ marginBottom: 16 }}>
         Add {tabs.find((tab) => tab.key === activeTab)?.label ?? 'Item'}
       </Button>
 
-      <ScrollView contentContainerStyle={styles.listContainer}>
+      <ScrollView contentContainerStyle={{ gap: 12, paddingBottom: 24 }}>
         {currentItems.length === 0 ? (
-          <Card style={styles.emptyCard}>
+          <Card style={{ borderRadius: 12 }}>
             <Card.Content>
               <Text variant="titleMedium">No records yet</Text>
-              <Text variant="bodyMedium" style={styles.metaText}>
+              <Text variant="bodyMedium" style={{ color: AppPalette.content.secondary, marginTop: 6 }}>
                 Add your first item to start building the timetable.
               </Text>
             </Card.Content>
@@ -539,10 +539,10 @@ export default function MasterDataScreen() {
           const itemName = 'name' in item ? String(item.name ?? '') : '';
 
           return (
-            <Card key={item.id} style={styles.card}>
+            <Card key={item.id} style={{ borderRadius: 12 }}>
               <Card.Content>
                 <Text variant="titleMedium">{itemName}</Text>
-                <Text variant="bodyMedium" style={styles.metaText}>
+                <Text variant="bodyMedium" style={{ color: AppPalette.content.secondary, marginTop: 6 }}>
                   {renderItemSummary(item)}
                 </Text>
               </Card.Content>
@@ -561,7 +561,7 @@ export default function MasterDataScreen() {
         <Dialog visible={isEditorOpen} onDismiss={() => setIsEditorOpen(false)}>
           <Dialog.Title>{editingId ? 'Edit Record' : 'Add Record'}</Dialog.Title>
           <Dialog.Content>
-            {error ? <Text style={styles.errorText}>{error}</Text> : null}
+            {error ? <Text style={{ color: AppPalette.status.conflictBadge, marginBottom: 12 }}>{error}</Text> : null}
             {renderFormFields()}
           </Dialog.Content>
           <Dialog.Actions>
@@ -574,56 +574,4 @@ export default function MasterDataScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: AppPalette.surface.bg,
-  },
-  heading: {
-    marginBottom: 12,
-    fontWeight: '700',
-  },
-  tabRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
-    marginBottom: 16,
-  },
-  primaryButton: {
-    marginBottom: 16,
-  },
-  listContainer: {
-    gap: 12,
-    paddingBottom: 24,
-  },
-  card: {
-    borderRadius: 12,
-  },
-  emptyCard: {
-    borderRadius: 12,
-  },
-  metaText: {
-    color: AppPalette.content.secondary,
-    marginTop: 6,
-  },
-  formGrid: {
-    gap: 12,
-  },
-  input: {
-    backgroundColor: AppPalette.surface.card,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: AppPalette.surface.border,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-  },
-  textArea: {
-    minHeight: 96,
-    textAlignVertical: 'top',
-  },
-  errorText: {
-    color: AppPalette.status.conflictBadge,
-    marginBottom: 12,
-  },
-});
+ 

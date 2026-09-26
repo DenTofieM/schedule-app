@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, ScrollView, View } from 'react-native';
 import { Button, Card, Divider, Menu, Text, TextInput } from 'react-native-paper';
 
 import { AppPalette } from '@/constants/theme';
@@ -117,14 +117,14 @@ export default function RoutinesScreen() {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+    <ScrollView style={{ flex: 1, backgroundColor: AppPalette.surface.bg }} contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
       <Text variant="headlineSmall">Routine Management</Text>
-      <Text variant="bodyMedium" style={styles.subtitle}>
+      <Text variant="bodyMedium" style={{ marginTop: 8, marginBottom: 18, color: AppPalette.content.secondary }}>
         Create, edit, and manage class routines.
       </Text>
 
-      <View style={styles.formCard}>
-        <Text variant="titleMedium" style={styles.sectionTitle}>
+      <View style={{ backgroundColor: AppPalette.surface.card, borderRadius: 12, padding: 16, marginBottom: 20, elevation: 2, borderWidth: 1, borderColor: AppPalette.surface.border }}>
+        <Text variant="titleMedium" style={{ marginBottom: 12 }}>
           {editingId ? 'Edit Routine' : 'Add Routine'}
         </Text>
 
@@ -135,7 +135,7 @@ export default function RoutinesScreen() {
             <Button
               mode="outlined"
               onPress={() => setMenuVisible(true)}
-              style={styles.selectButton}
+              style={{ marginBottom: 12 }}
             >
               {selectedSection ? selectedSection.name : 'Select section'}
             </Button>
@@ -158,7 +158,7 @@ export default function RoutinesScreen() {
           value={form.name}
           onChangeText={(value) => setForm((current) => ({ ...current, name: value }))}
           mode="outlined"
-          style={styles.input}
+          style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card }}
         />
 
         <TextInput
@@ -166,7 +166,7 @@ export default function RoutinesScreen() {
           value={form.academicYear}
           onChangeText={(value) => setForm((current) => ({ ...current, academicYear: value }))}
           mode="outlined"
-          style={styles.input}
+          style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card }}
         />
 
         <TextInput
@@ -176,10 +176,10 @@ export default function RoutinesScreen() {
           mode="outlined"
           multiline
           numberOfLines={4}
-          style={styles.input}
+          style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card }}
         />
 
-        <View style={styles.formActions}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', gap: 10, marginTop: 6 }}>
           <Button mode="contained" onPress={handleSubmit}>
             {editingId ? 'Update Routine' : 'Create Routine'}
           </Button>
@@ -190,41 +190,40 @@ export default function RoutinesScreen() {
           )}
         </View>
       </View>
+      <Divider style={{ marginVertical: 16 }} />
 
-      <Divider style={styles.divider} />
-
-      <Text variant="titleMedium" style={styles.sectionTitle}>
+      <Text variant="titleMedium" style={{ marginBottom: 12 }}>
         Existing Routines
       </Text>
 
       {routines.length === 0 ? (
-        <Card style={styles.emptyCard}>
+        <Card style={{ backgroundColor: AppPalette.surface.card, borderWidth: 1, borderColor: AppPalette.surface.border }}>
           <Card.Content>
             <Text variant="bodyMedium">No routines yet. Create your first timetable.</Text>
           </Card.Content>
         </Card>
       ) : (
         routines.map((routine) => (
-          <Card key={routine.id} style={styles.routineCard}>
+          <Card key={routine.id} style={{ marginBottom: 12, backgroundColor: AppPalette.surface.card, borderWidth: 1, borderColor: AppPalette.surface.border }}>
             <Card.Content>
-              <View style={styles.cardHeader}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
                 <Text variant="titleMedium">{routine.name}</Text>
-                <Text variant="labelLarge" style={styles.statusText}>
+                <Text variant="labelLarge" style={{ color: AppPalette.brand[700], backgroundColor: AppPalette.brand[50], paddingHorizontal: 8, paddingVertical: 4, borderRadius: 999, overflow: 'hidden' }}>
                   {routine.status}
                 </Text>
               </View>
 
-              <Text variant="bodyMedium" style={styles.metaRow}>
+              <Text variant="bodyMedium" style={{ marginBottom: 4, color: AppPalette.content.secondary }}>
                 {sections.find((section) => section.id === routine.sectionId)?.name ?? 'Unassigned'}
               </Text>
-              <Text variant="bodySmall" style={styles.metaRow}>
+              <Text variant="bodySmall" style={{ marginBottom: 4, color: AppPalette.content.secondary }}>
                 Academic year: {routine.academicYear}
               </Text>
-              <Text variant="bodySmall" style={styles.metaRow}>
+              <Text variant="bodySmall" style={{ marginBottom: 4, color: AppPalette.content.secondary }}>
                 {routine.description || 'No description provided'}
               </Text>
 
-              <View style={styles.listActions}>
+              <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 12 }}>
                 <Button compact mode="contained-tonal" onPress={() => handleOpenBuilder(routine)}>
                   Open Builder
                 </Button>
@@ -248,82 +247,4 @@ export default function RoutinesScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: AppPalette.surface.bg,
-  },
-  contentContainer: {
-    padding: 20,
-    paddingBottom: 40,
-  },
-  subtitle: {
-    marginTop: 8,
-    marginBottom: 18,
-    color: AppPalette.content.secondary,
-  },
-  formCard: {
-    backgroundColor: AppPalette.surface.card,
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 20,
-    elevation: 2,
-    borderWidth: 1,
-    borderColor: AppPalette.surface.border,
-  },
-  sectionTitle: {
-    marginBottom: 12,
-  },
-  selectButton: {
-    marginBottom: 12,
-  },
-  input: {
-    marginBottom: 12,
-    backgroundColor: AppPalette.surface.card,
-  },
-  formActions: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    gap: 10,
-    marginTop: 6,
-  },
-  divider: {
-    marginVertical: 16,
-  },
-  routineCard: {
-    marginBottom: 12,
-    backgroundColor: AppPalette.surface.card,
-    borderWidth: 1,
-    borderColor: AppPalette.surface.border,
-  },
-  emptyCard: {
-    backgroundColor: AppPalette.surface.card,
-    borderWidth: 1,
-    borderColor: AppPalette.surface.border,
-  },
-  cardHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
-  statusText: {
-    color: AppPalette.brand[700],
-    backgroundColor: AppPalette.brand[50],
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 999,
-    overflow: 'hidden',
-  },
-  metaRow: {
-    marginBottom: 4,
-    color: AppPalette.content.secondary,
-  },
-  listActions: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
-    marginTop: 12,
-  },
-});
+ 

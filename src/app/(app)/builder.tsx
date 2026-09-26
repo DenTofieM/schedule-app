@@ -1,7 +1,8 @@
 import { useRouter } from 'expo-router';
 import { useEffect, useMemo, useState } from 'react';
-import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { RefreshControl, ScrollView, View } from 'react-native';
 import { Button, Chip, Menu, Snackbar, Text } from 'react-native-paper';
+
 
 import { AppPalette } from '@/constants/theme';
 import { conflictDetectionService } from '@/services/conflict-detection';
@@ -200,7 +201,7 @@ export default function BuilderScreen() {
 
   if (!currentRoutine) {
     return (
-      <View style={styles.emptyContainer}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20, backgroundColor: AppPalette.surface.bg }}>
         <Text variant="bodyMedium">Select or create a routine to start building</Text>
         <Button mode="contained" onPress={() => router.push('/(app)/routines')}>
           Go to Routines
@@ -213,17 +214,17 @@ export default function BuilderScreen() {
 
   return (
     <ScrollView
-      style={styles.container}
+      style={{ flex: 1, backgroundColor: AppPalette.surface.bg }}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => {}} />}
     >
-      <View style={styles.header}>
+      <View style={{ padding: 16, backgroundColor: AppPalette.surface.card, borderBottomWidth: 1, borderBottomColor: AppPalette.surface.border }}>
         <Text variant="headlineSmall">{currentRoutine.name}</Text>
         <Text variant="bodySmall">
           {sections.find((section) => section.id === currentRoutine.sectionId)?.name ?? 'No section'}
         </Text>
       </View>
 
-      <View style={styles.actionBar}>
+      <View style={{ flexDirection: 'row', padding: 12, gap: 8 }}>
         <Button mode="outlined" onPress={handleCheckConflicts} icon="check-circle-outline">
           Check Conflicts
         </Button>
@@ -233,7 +234,7 @@ export default function BuilderScreen() {
       </View>
 
       {conflicts.length > 0 && (
-        <View style={styles.conflictAlert}>
+        <View style={{ paddingHorizontal: 12, paddingBottom: 8 }}>
           <Chip
             icon={conflictSummary.errors > 0 ? 'alert-circle' : 'alert'}
             style={{
@@ -248,21 +249,21 @@ export default function BuilderScreen() {
         </View>
       )}
 
-      <View style={styles.gridWrapper}>
+      <View style={{ marginHorizontal: 12, marginTop: 8, backgroundColor: AppPalette.surface.card, borderRadius: 12, padding: 8, borderWidth: 1, borderColor: AppPalette.surface.border }}>
         <ScrollView horizontal>
           <View>
-            <View style={styles.gridHeaderRow}>
-              <Text style={styles.gridHeaderCell}>Period</Text>
+            <View style={{ flexDirection: 'row', minWidth: 700 }}>
+              <Text style={{ width: 120, padding: 8, fontWeight: '700', textAlign: 'center', backgroundColor: AppPalette.surface.cardMuted, borderWidth: 1, borderColor: AppPalette.surface.border, color: AppPalette.content.primary }}>Period</Text>
               {sortedDays.map((day) => (
-                <Text key={day.id} style={styles.gridHeaderCell}>
+                <Text key={day.id} style={{ width: 120, padding: 8, fontWeight: '700', textAlign: 'center', backgroundColor: AppPalette.surface.cardMuted, borderWidth: 1, borderColor: AppPalette.surface.border, color: AppPalette.content.primary }}>
                   {day.name}
                 </Text>
               ))}
             </View>
 
             {sortedPeriods.map((period) => (
-              <View key={period.id} style={styles.gridRow}>
-                <Text style={styles.periodCell}>{period.name}</Text>
+              <View key={period.id} style={{ flexDirection: 'row', minWidth: 700 }}>
+                <Text style={{ width: 80, padding: 8, borderWidth: 1, borderColor: AppPalette.surface.border, textAlign: 'center', justifyContent: 'center', backgroundColor: AppPalette.status.emptySlotBg, color: AppPalette.content.secondary }}>{period.name}</Text>
                 {sortedDays.map((day) => {
                   const key = `${day.id}:${period.id}`;
                   const selection = drafts[key] ?? { subjectId: '', teacherId: '' };
@@ -270,7 +271,7 @@ export default function BuilderScreen() {
                   const availableTeachers = getTeacherOptionsForSubject(selection.subjectId);
 
                   return (
-                    <View key={`${day.id}-${period.id}`} style={styles.slotCell}>
+                    <View key={`${day.id}-${period.id}`} style={{ width: 120, minHeight: 120, padding: 8, borderWidth: 1, borderColor: AppPalette.surface.border, gap: 6, justifyContent: 'center', backgroundColor: AppPalette.surface.card }}>
                       <Menu
                         visible={menuState[menuKey]?.subject ?? false}
                         onDismiss={() => toggleMenu(menuKey, 'subject', false)}
@@ -355,7 +356,7 @@ export default function BuilderScreen() {
         </ScrollView>
       </View>
 
-      <View style={styles.bottomActions}>
+      <View style={{ flexDirection: 'row', padding: 16, gap: 8, justifyContent: 'flex-end' }}>
         <Button mode="text" onPress={() => router.back()}>
           Cancel
         </Button>
@@ -375,83 +376,3 @@ export default function BuilderScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: AppPalette.surface.bg,
-  },
-  emptyContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-  },
-  header: {
-    padding: 16,
-    backgroundColor: AppPalette.surface.card,
-    borderBottomWidth: 1,
-    borderBottomColor: AppPalette.surface.border,
-  },
-  actionBar: {
-    flexDirection: 'row',
-    padding: 12,
-    gap: 8,
-  },
-  conflictAlert: {
-    paddingHorizontal: 12,
-    paddingBottom: 8,
-  },
-  gridWrapper: {
-    marginHorizontal: 12,
-    marginTop: 8,
-    backgroundColor: AppPalette.surface.card,
-    borderRadius: 12,
-    padding: 8,
-    borderWidth: 1,
-    borderColor: AppPalette.surface.border,
-  },
-  gridHeaderRow: {
-    flexDirection: 'row',
-    minWidth: 700,
-  },
-  gridHeaderCell: {
-    width: 120,
-    padding: 8,
-    fontWeight: '700',
-    textAlign: 'center',
-    backgroundColor: AppPalette.surface.cardMuted,
-    borderWidth: 1,
-    borderColor: AppPalette.surface.border,
-    color: AppPalette.content.primary,
-  },
-  gridRow: {
-    flexDirection: 'row',
-    minWidth: 700,
-  },
-  periodCell: {
-    width: 80,
-    padding: 8,
-    borderWidth: 1,
-    borderColor: AppPalette.surface.border,
-    textAlign: 'center',
-    justifyContent: 'center',
-    backgroundColor: AppPalette.status.emptySlotBg,
-    color: AppPalette.content.secondary,
-  },
-  slotCell: {
-    width: 120,
-    minHeight: 120,
-    padding: 8,
-    borderWidth: 1,
-    borderColor: AppPalette.surface.border,
-    gap: 6,
-    justifyContent: 'center',
-    backgroundColor: AppPalette.surface.card,
-  },
-  bottomActions: {
-    flexDirection: 'row',
-    padding: 16,
-    gap: 8,
-    justifyContent: 'flex-end',
-  },
-});

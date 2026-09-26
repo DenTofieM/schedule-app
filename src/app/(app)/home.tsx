@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 
 import { authService } from '@/api/auth';
@@ -24,62 +24,45 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text variant="headlineSmall" style={styles.welcome}>
+    <View className="flex-1 p-5" style={{ backgroundColor: AppPalette.surface.bg }}>
+      <Text variant="headlineSmall" style={{ marginBottom: 24, fontWeight: 'bold' }}>
         Welcome, {currentUser?.firstName}!
       </Text>
 
-      <View style={styles.statsContainer}>
-        <View style={styles.statCard}>
-          <Text variant="bodySmall" style={styles.statLabel}>
+      <View className="flex-row" style={{ marginBottom: 30 }}>
+        <View className="flex-1 p-4 rounded-2xl items-center" style={{ backgroundColor: AppPalette.surface.card, borderWidth: 1, borderColor: AppPalette.surface.border, elevation: 2 }}>
+          <Text variant="bodySmall" style={{ color: AppPalette.content.secondary, marginBottom: 8 }}>
             Classes
           </Text>
-          <Text variant="headlineMedium" style={styles.statValue}>
+          <Text variant="headlineMedium" style={{ color: AppPalette.brand[500], fontWeight: 'bold' }}>
             {sections.length}
           </Text>
         </View>
 
-        <View style={styles.statCard}>
-          <Text variant="bodySmall" style={styles.statLabel}>
+        <View className="flex-1 p-4 rounded-2xl items-center" style={{ marginLeft: 12, backgroundColor: AppPalette.surface.card, borderWidth: 1, borderColor: AppPalette.surface.border, elevation: 2 }}>
+          <Text variant="bodySmall" style={{ color: AppPalette.content.secondary, marginBottom: 8 }}>
             Routines
           </Text>
-          <Text variant="headlineMedium" style={styles.statValue}>
+          <Text variant="headlineMedium" style={{ color: AppPalette.brand[500], fontWeight: 'bold' }}>
             {routines.length}
           </Text>
         </View>
       </View>
 
-      <View style={styles.actionsContainer}>
-        <Button
-          mode="contained"
-          onPress={() => router.push('/(app)/routines')}
-          style={styles.actionButton}
-        >
+      <View style={{ gap: 12 }}>
+        <Button mode="contained" onPress={() => router.push('/(app)/routines')} contentStyle={{ paddingVertical: 6 }}>
           View Routines
         </Button>
 
-        <Button
-          mode="contained"
-          onPress={() => router.push('/(app)/builder')}
-          style={styles.actionButton}
-        >
+        <Button mode="contained" onPress={() => router.push('/(app)/builder')} contentStyle={{ paddingVertical: 6 }}>
           Create Routine
         </Button>
 
-        <Button
-          mode="outlined"
-          onPress={() => router.push('/(app)/master-data')}
-          style={styles.actionButton}
-        >
+        <Button mode="outlined" onPress={() => router.push('/(app)/master-data')} contentStyle={{ paddingVertical: 6 }}>
           Manage Master Data
         </Button>
 
-        <Button
-          mode="text"
-          textColor={AppPalette.status.conflictBadge}
-          onPress={handleLogout}
-          style={styles.logoutButton}
-        >
+        <Button mode="text" textColor={AppPalette.status.conflictBadge} onPress={handleLogout} style={{ marginTop: 12 }}>
           Logout
         </Button>
       </View>
@@ -87,46 +70,4 @@ export default function HomeScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: AppPalette.surface.bg,
-  },
-  welcome: {
-    marginBottom: 24,
-    fontWeight: 'bold',
-  },
-  statsContainer: {
-    flexDirection: 'row',
-    marginBottom: 30,
-    gap: 12,
-  },
-  statCard: {
-    flex: 1,
-    backgroundColor: AppPalette.surface.card,
-    padding: 16,
-    borderRadius: 12,
-    elevation: 2,
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: AppPalette.surface.border,
-  },
-  statLabel: {
-    color: AppPalette.content.secondary,
-    marginBottom: 8,
-  },
-  statValue: {
-    color: AppPalette.brand[500],
-    fontWeight: 'bold',
-  },
-  actionsContainer: {
-    gap: 12,
-  },
-  actionButton: {
-    paddingVertical: 6,
-  },
-  logoutButton: {
-    marginTop: 12,
-  },
-});
+ 
