@@ -2,6 +2,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Tabs, useRouter } from 'expo-router';
 import { useEffect } from 'react';
 
+import { AppPalette } from '@/constants/theme';
 import { useAppStore } from '@/store';
 
 export default function AppLayout() {
@@ -21,10 +22,10 @@ export default function AppLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#2196F3',
-        tabBarInactiveTintColor: '#999',
+        tabBarActiveTintColor: AppPalette.brand[500],
+        tabBarInactiveTintColor: AppPalette.content.tertiary,
         headerShown: true,
-        headerTintColor: '#2196F3',
+        headerTintColor: AppPalette.brand[600],
       }}
     >
       <Tabs.Screen

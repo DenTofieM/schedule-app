@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Chip, Menu, Snackbar, Text } from 'react-native-paper';
 
+import { AppPalette } from '@/constants/theme';
 import { conflictDetectionService } from '@/services/conflict-detection';
 import { useAppStore, useRoutineBuilderStore } from '@/store';
 import type { Assignment } from '@/types';
@@ -14,7 +15,7 @@ type SlotDraft = {
 
 export default function BuilderScreen() {
   const router = useRouter();
-  const [refreshing, setRefreshing] = useState(false);
+  const [refreshing] = useState(false);
   const [snackbar, setSnackbar] = useState({ visible: false, message: '' });
   const [drafts, setDrafts] = useState<Record<string, SlotDraft>>({});
   const [menuState, setMenuState] = useState<Record<string, { subject: boolean; teacher: boolean }>>({});
@@ -28,7 +29,6 @@ export default function BuilderScreen() {
   const updateRoutine = useAppStore((state) => state.updateRoutine);
 
   const currentRoutineId = useRoutineBuilderStore((state) => state.currentRoutineId);
-  const assignments = useRoutineBuilderStore((state) => state.assignments);
   const conflicts = useRoutineBuilderStore((state) => state.conflicts);
   const clearConflicts = useRoutineBuilderStore((state) => state.clearConflicts);
   const addConflict = useRoutineBuilderStore((state) => state.addConflict);
@@ -237,7 +237,10 @@ export default function BuilderScreen() {
           <Chip
             icon={conflictSummary.errors > 0 ? 'alert-circle' : 'alert'}
             style={{
-              backgroundColor: conflictSummary.errors > 0 ? '#ffebee' : '#fff3e0',
+              backgroundColor:
+                conflictSummary.errors > 0
+                  ? AppPalette.status.conflictBg
+                  : AppPalette.status.successBg,
             }}
           >
             {conflictSummary.totalConflicts} issue(s)
@@ -338,7 +341,7 @@ export default function BuilderScreen() {
                       <Button
                         mode="text"
                         compact
-                        textColor="#d32f2f"
+                        textColor={AppPalette.status.conflictBadge}
                         onPress={() => clearCellDraft(day.id, period.id)}
                       >
                         Clear
@@ -375,7 +378,7 @@ export default function BuilderScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: AppPalette.surface.bg,
   },
   emptyContainer: {
     flex: 1,
@@ -385,9 +388,9 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: 16,
-    backgroundColor: 'white',
+    backgroundColor: AppPalette.surface.card,
     borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
+    borderBottomColor: AppPalette.surface.border,
   },
   actionBar: {
     flexDirection: 'row',
@@ -401,9 +404,11 @@ const styles = StyleSheet.create({
   gridWrapper: {
     marginHorizontal: 12,
     marginTop: 8,
-    backgroundColor: '#fff',
+    backgroundColor: AppPalette.surface.card,
     borderRadius: 12,
     padding: 8,
+    borderWidth: 1,
+    borderColor: AppPalette.surface.border,
   },
   gridHeaderRow: {
     flexDirection: 'row',
@@ -414,9 +419,10 @@ const styles = StyleSheet.create({
     padding: 8,
     fontWeight: '700',
     textAlign: 'center',
-    backgroundColor: '#f1f5f9',
+    backgroundColor: AppPalette.surface.cardMuted,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
+    borderColor: AppPalette.surface.border,
+    color: AppPalette.content.primary,
   },
   gridRow: {
     flexDirection: 'row',
@@ -426,19 +432,21 @@ const styles = StyleSheet.create({
     width: 80,
     padding: 8,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
+    borderColor: AppPalette.surface.border,
     textAlign: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f8fafc',
+    backgroundColor: AppPalette.status.emptySlotBg,
+    color: AppPalette.content.secondary,
   },
   slotCell: {
     width: 120,
     minHeight: 120,
     padding: 8,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
+    borderColor: AppPalette.surface.border,
     gap: 6,
     justifyContent: 'center',
+    backgroundColor: AppPalette.surface.card,
   },
   bottomActions: {
     flexDirection: 'row',

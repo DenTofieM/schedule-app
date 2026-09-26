@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, TextInput, View } from 'react-native';
 import { Button, Card, Dialog, Portal, Text } from 'react-native-paper';
 
+import { AppPalette } from '@/constants/theme';
 import { addEntity, removeEntity, updateEntity } from '@/services/master-data';
 import { storageService } from '@/services/storage';
 import { useAppStore } from '@/store';
@@ -547,7 +548,7 @@ export default function MasterDataScreen() {
               </Card.Content>
               <Card.Actions>
                 <Button onPress={() => openEditForm(item.id)}>Edit</Button>
-                <Button textColor="#d32f2f" onPress={() => handleDelete(item.id)}>
+                <Button textColor={AppPalette.status.conflictBadge} onPress={() => handleDelete(item.id)}>
                   Delete
                 </Button>
               </Card.Actions>
@@ -577,7 +578,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: AppPalette.surface.bg,
   },
   heading: {
     marginBottom: 12,
@@ -603,17 +604,17 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   metaText: {
-    color: '#666',
+    color: AppPalette.content.secondary,
     marginTop: 6,
   },
   formGrid: {
     gap: 12,
   },
   input: {
-    backgroundColor: '#fff',
+    backgroundColor: AppPalette.surface.card,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#d9d9d9',
+    borderColor: AppPalette.surface.border,
     paddingHorizontal: 12,
     paddingVertical: 10,
   },
@@ -622,7 +623,7 @@ const styles = StyleSheet.create({
     textAlignVertical: 'top',
   },
   errorText: {
-    color: '#d32f2f',
+    color: AppPalette.status.conflictBadge,
     marginBottom: 12,
   },
 });

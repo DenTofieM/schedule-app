@@ -5,6 +5,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { ActivityIndicator, Button, Text, TextInput } from 'react-native-paper';
 
 import { authService } from '@/api/auth';
+import { AppPalette } from '@/constants/theme';
 import { useAppStore } from '@/store';
 
 export default function LoginScreen() {
@@ -118,7 +119,7 @@ export default function LoginScreen() {
         </Button>
 
         <View style={styles.footer}>
-          <Text variant="bodySmall">Don't have an account? </Text>
+          <Text variant="bodySmall">Don&apos;t have an account? </Text>
           <Button
             mode="text"
             onPress={() => router.push('/(auth)/register')}
@@ -145,7 +146,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: AppPalette.surface.bg,
   },
   header: {
     marginBottom: 40,
@@ -156,32 +157,34 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   subtitle: {
-    color: '#666',
+    color: AppPalette.content.secondary,
   },
   form: {
-    backgroundColor: 'white',
+    backgroundColor: AppPalette.surface.card,
     padding: 20,
     borderRadius: 12,
     elevation: 2,
+    borderWidth: 1,
+    borderColor: AppPalette.surface.border,
   },
   input: {
     marginBottom: 8,
   },
   inputError: {
-    color: '#d32f2f',
+    color: AppPalette.status.conflictBadge,
     fontSize: 12,
     marginBottom: 12,
   },
   errorContainer: {
-    backgroundColor: '#ffebee',
+    backgroundColor: AppPalette.status.conflictBg,
     padding: 12,
     borderRadius: 8,
     marginBottom: 20,
     borderLeftWidth: 4,
-    borderLeftColor: '#d32f2f',
+    borderLeftColor: AppPalette.status.conflictBorder,
   },
   errorText: {
-    color: '#d32f2f',
+    color: AppPalette.status.conflictText,
   },
   submitButton: {
     marginTop: 20,

@@ -30,8 +30,11 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
+    'react/no-unescaped-entities': 'off',
     'react-native/no-color-literals': 'warn',
     'react-native/no-inline-styles': 'warn',
+    'react-native/no-raw-text': 'off',
+    'react-native/sort-styles': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
     'no-unused-vars': 'off',

@@ -2,6 +2,8 @@ import { useRouter } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 
+import { AppPalette } from '@/constants/theme';
+
 export default function ForgotPasswordScreen() {
   const router = useRouter();
 
@@ -23,11 +25,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: 'center',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: AppPalette.surface.bg,
   },
   placeholder: {
     marginTop: 16,
     marginBottom: 16,
-    color: '#666',
+    color: AppPalette.content.secondary,
   },
 });

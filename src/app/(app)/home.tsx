@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 
 import { authService } from '@/api/auth';
+import { AppPalette } from '@/constants/theme';
 import { useAppStore } from '@/store';
 
 export default function HomeScreen() {
@@ -75,7 +76,7 @@ export default function HomeScreen() {
 
         <Button
           mode="text"
-          textColor="#d32f2f"
+          textColor={AppPalette.status.conflictBadge}
           onPress={handleLogout}
           style={styles.logoutButton}
         >
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: AppPalette.surface.bg,
   },
   welcome: {
     marginBottom: 24,
@@ -103,18 +104,20 @@ const styles = StyleSheet.create({
   },
   statCard: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: AppPalette.surface.card,
     padding: 16,
     borderRadius: 12,
     elevation: 2,
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: AppPalette.surface.border,
   },
   statLabel: {
-    color: '#666',
+    color: AppPalette.content.secondary,
     marginBottom: 8,
   },
   statValue: {
-    color: '#2196F3',
+    color: AppPalette.brand[500],
     fontWeight: 'bold',
   },
   actionsContainer: {

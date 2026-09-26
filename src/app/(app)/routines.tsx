@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react';
 import { Alert, ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Card, Divider, Menu, Text, TextInput } from 'react-native-paper';
 
+import { AppPalette } from '@/constants/theme';
 import { useAppStore, useRoutineBuilderStore } from '@/store';
 import type { Routine } from '@/types';
 
@@ -230,7 +231,12 @@ export default function RoutinesScreen() {
                 <Button compact mode="outlined" onPress={() => handleEdit(routine)}>
                   Edit
                 </Button>
-                <Button compact mode="text" textColor="#d32f2f" onPress={() => handleDelete(routine.id)}>
+                <Button
+                  compact
+                  mode="text"
+                  textColor={AppPalette.status.conflictBadge}
+                  onPress={() => handleDelete(routine.id)}
+                >
                   Delete
                 </Button>
               </View>
@@ -245,7 +251,7 @@ export default function RoutinesScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: AppPalette.surface.bg,
   },
   contentContainer: {
     padding: 20,
@@ -254,14 +260,16 @@ const styles = StyleSheet.create({
   subtitle: {
     marginTop: 8,
     marginBottom: 18,
-    color: '#666',
+    color: AppPalette.content.secondary,
   },
   formCard: {
-    backgroundColor: '#fff',
+    backgroundColor: AppPalette.surface.card,
     borderRadius: 12,
     padding: 16,
     marginBottom: 20,
     elevation: 2,
+    borderWidth: 1,
+    borderColor: AppPalette.surface.border,
   },
   sectionTitle: {
     marginBottom: 12,
@@ -271,7 +279,7 @@ const styles = StyleSheet.create({
   },
   input: {
     marginBottom: 12,
-    backgroundColor: '#fff',
+    backgroundColor: AppPalette.surface.card,
   },
   formActions: {
     flexDirection: 'row',
@@ -285,10 +293,14 @@ const styles = StyleSheet.create({
   },
   routineCard: {
     marginBottom: 12,
-    backgroundColor: '#fff',
+    backgroundColor: AppPalette.surface.card,
+    borderWidth: 1,
+    borderColor: AppPalette.surface.border,
   },
   emptyCard: {
-    backgroundColor: '#fff',
+    backgroundColor: AppPalette.surface.card,
+    borderWidth: 1,
+    borderColor: AppPalette.surface.border,
   },
   cardHeader: {
     flexDirection: 'row',
@@ -297,8 +309,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   statusText: {
-    color: '#1976d2',
-    backgroundColor: '#e3f2fd',
+    color: AppPalette.brand[700],
+    backgroundColor: AppPalette.brand[50],
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 999,
@@ -306,7 +318,7 @@ const styles = StyleSheet.create({
   },
   metaRow: {
     marginBottom: 4,
-    color: '#555',
+    color: AppPalette.content.secondary,
   },
   listActions: {
     flexDirection: 'row',
